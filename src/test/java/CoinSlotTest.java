@@ -22,4 +22,11 @@ public class CoinSlotTest {
     assertEquals("0.10", out.calculateValue().toString());
   }
 
+  @Test public void testValueWhenDimeAndTwoNickelsAdded() {
+    out.insertCoin(2.268, 17.91);
+    out.insertCoin(5.000, 21.21);
+    out.insertCoin(5.000, 21.21);
+    assertEquals("0.20", out.calculateValue().toString());
+  }
+
 }
