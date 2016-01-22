@@ -10,11 +10,14 @@ public class MachineTest {
   private Machine out;
   private Display display;
   private CoinSlot coinSlot;
+  private ProductButtons buttons;
 
   @Before public void setUp() {
     display = mock(Display.class);
     coinSlot = mock(CoinSlot.class);
-    out = new Machine(display, coinSlot);
+    buttons = mock(ProductButtons.class);
+    when(buttons.isPressed()).thenReturn(null);
+    out = new Machine(display, coinSlot, buttons);
   }
 
   @Test public void testPaidAmountDisplayed() {
@@ -28,6 +31,14 @@ public class MachineTest {
     when(coinSlot.countCoins()).thenReturn(0);
     out.execute();
     verify(display).display("INSERT COIN");
+  }
+
+  @Test public void testColaIsDispensedWhenPaidFor() {
+    when(coinSlot.countCoins()).thenReturn(4);
+    when(coinSlot.calculateValue()).thenReturn(new BigDecimal("1.0"));
+    when(buttons.isPressed()).thenReturn(Product.COLA);
+    out.execute();
+    verify(display).display("THANK YOU");
   }
 
 }
