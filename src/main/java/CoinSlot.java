@@ -1,3 +1,4 @@
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -9,7 +10,7 @@ import java.util.List;
   private List<Coin> coins = new ArrayList<>();
   private CoinReturn coinReturn;
 
-  public CoinSlot(CoinReturn coinReturn) {
+  @Autowired public CoinSlot(CoinReturn coinReturn) {
     this.coinReturn = coinReturn;
   }
 
