@@ -2,8 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class CoinSlotTest {
 
@@ -36,6 +35,11 @@ public class CoinSlotTest {
   @Test public void testInvalidCoinsAreReturned() {
     out.insertCoin(200.0, 400.0);
     verify(coinReturn).returnCoin();
+  }
+
+  @Test public void testValidCoinsAreNotReturned() {
+    out.insertCoin(CoinConstants.DIME_WEIGHT, CoinConstants.DIME_DIAMETER);
+    verify(coinReturn, never()).returnCoin();
   }
 
 }
