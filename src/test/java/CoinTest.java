@@ -20,4 +20,12 @@ public class CoinTest {
     Coin.identify(2.500, 19.05);
   }
 
+  @Test public void whenGivenImperfectNickelIdentifyNickel() {
+    assertEquals(Coin.NICKEL, Coin.identify(4.99, 21.00));
+  }
+
+  @Test public void whenGivenImperfectNickelIdentifyNickel2() {
+    assertEquals(Coin.NICKEL, Coin.identify(5.01, 20.9));
+  }
+
 }
