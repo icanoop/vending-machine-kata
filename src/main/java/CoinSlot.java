@@ -4,8 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
-public class CoinSlot {
+@Component public class CoinSlot {
 
   private List<Coin> coins = new ArrayList<>();
   private CoinReturn coinReturn;
@@ -14,6 +13,9 @@ public class CoinSlot {
     this.coinReturn = coinReturn;
   }
 
+  /**
+   * The input used to insert coins into the slot.
+   */
   public void insertCoin(double weight, double diameter) {
     try {
       coins.add(Coin.identify(weight, diameter));
@@ -22,10 +24,16 @@ public class CoinSlot {
     }
   }
 
+  /**
+   * @return The total monetary value of all the coins in the slot.
+   */
   public BigDecimal calculateValue() {
     return coins.stream().map(coin -> coin.value).reduce(BigDecimal.ZERO, BigDecimal::add);
   }
 
+  /**
+   * @return The total number of coins in the slot.
+   */
   public int countCoins() {
     return coins.size();
   }

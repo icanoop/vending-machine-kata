@@ -2,6 +2,10 @@ import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Machine is the main orchestrator of components. It has a periodic task that checks for user
+ * input and makes state transitions as necessary.
+ */
 @Component public class Machine {
 
   private Display display;
@@ -14,6 +18,9 @@ import org.springframework.stereotype.Component;
     this.buttons = buttons;
   }
 
+  /**
+   * Periodic task that executes every 100ms or so.
+   */
   public void execute() {
     if (coinSlot.countCoins() == 0) {
       display.display("INSERT COIN");
