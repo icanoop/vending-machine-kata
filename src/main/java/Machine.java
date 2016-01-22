@@ -1,3 +1,4 @@
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +12,9 @@ import org.springframework.stereotype.Component;
     this.coinSlot = coinSlot;
   }
 
-
+  public void execute() {
+    val paid = coinSlot.calculateValue();
+    display.display(paid.toString());
+  }
 
 }
