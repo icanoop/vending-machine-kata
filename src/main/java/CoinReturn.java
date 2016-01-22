@@ -1,5 +1,3 @@
-/**
- * Created by ryan_boder on 1/21/16.
- */
-public class CoinReturn {
+public interface CoinReturn {
+  void returnCoin();
 }

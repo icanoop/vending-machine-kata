@@ -2,13 +2,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class CoinSlotTest {
 
   private CoinSlot out;
+  private CoinReturn coinReturn;
 
   @Before public void setUp() {
-    out = new CoinSlot();
+    coinReturn = mock(CoinReturn.class);
+    out = new CoinSlot(coinReturn);
   }
 
   @Test public void testValueWhenNickelAdded() {
@@ -27,6 +31,11 @@ public class CoinSlotTest {
     out.insertCoin(CoinConstants.NICKEL_WEIGHT, CoinConstants.NICKEL_DIAMETER);
     out.insertCoin(CoinConstants.NICKEL_WEIGHT, CoinConstants.NICKEL_DIAMETER);
     assertEquals("0.20", out.calculateValue().toString());
+  }
+
+  @Test public void testInvalidCoinsAreReturned() {
+    out.insertCoin(200.0, 400.0);
+    verify(coinReturn).returnCoin();
   }
 
 }
