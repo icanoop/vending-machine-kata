@@ -20,9 +20,16 @@ public class MachineTest {
   }
 
   @Test public void testPaidAmountDisplayed() {
+    when(coinSlot.countCoins()).thenReturn(3);
     when(coinSlot.calculateValue()).thenReturn(new BigDecimal("1.0"));
     out.execute();
     assertEquals("1.0", display.getText());
+  }
+
+  @Test public void testInsertCoinsDisplayedWhenNoCoins() {
+    when(coinSlot.countCoins()).thenReturn(0);
+    out.execute();
+    assertEquals("INSERT COIN", display.getText());
   }
 
 }

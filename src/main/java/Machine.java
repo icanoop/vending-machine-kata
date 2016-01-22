@@ -13,8 +13,12 @@ import org.springframework.stereotype.Component;
   }
 
   public void execute() {
-    val paid = coinSlot.calculateValue();
-    display.display(paid.toString());
+    if (coinSlot.countCoins() == 0) {
+      display.display("INSERT COIN");
+    } else {
+      val paid = coinSlot.calculateValue();
+      display.display(paid.toString());
+    }
   }
 
 }

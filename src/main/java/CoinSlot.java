@@ -14,4 +14,8 @@ public class CoinSlot {
     return coins.stream().map(coin -> coin.value).reduce(BigDecimal.ZERO, BigDecimal::add);
   }
 
+  public int countCoins() {
+    return coins.size();
+  }
+
 }
