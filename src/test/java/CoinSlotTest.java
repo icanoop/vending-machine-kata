@@ -12,20 +12,20 @@ public class CoinSlotTest {
   }
 
   @Test public void testValueWhenNickelAdded() {
-    out.insertCoin(5.000, 21.21);
+    out.insertCoin(CoinConstants.NICKEL_WEIGHT, CoinConstants.NICKEL_DIAMETER);
     assertEquals("0.05", out.calculateValue().toString());
   }
 
   @Test public void testValueWhenTwoNickelsAdded() {
-    out.insertCoin(5.000, 21.21);
-    out.insertCoin(5.000, 21.21);
+    out.insertCoin(CoinConstants.NICKEL_WEIGHT, CoinConstants.NICKEL_DIAMETER);
+    out.insertCoin(CoinConstants.NICKEL_WEIGHT, CoinConstants.NICKEL_DIAMETER);
     assertEquals("0.10", out.calculateValue().toString());
   }
 
   @Test public void testValueWhenDimeAndTwoNickelsAdded() {
-    out.insertCoin(2.268, 17.91);
-    out.insertCoin(5.000, 21.21);
-    out.insertCoin(5.000, 21.21);
+    out.insertCoin(CoinConstants.DIME_WEIGHT, CoinConstants.DIME_DIAMETER);
+    out.insertCoin(CoinConstants.NICKEL_WEIGHT, CoinConstants.NICKEL_DIAMETER);
+    out.insertCoin(CoinConstants.NICKEL_WEIGHT, CoinConstants.NICKEL_DIAMETER);
     assertEquals("0.20", out.calculateValue().toString());
   }
 

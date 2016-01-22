@@ -3,9 +3,11 @@ import org.apache.commons.math3.util.Precision;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
+//https://www.usmint.gov/about_the_mint/?action=coin_specifications
 public enum Coin {
-  //https://www.usmint.gov/about_the_mint/?action=coin_specifications
-  DIME(2.268, 17.91, new BigDecimal("0.1")), NICKEL(5.000, 21.21, new BigDecimal("0.05")), QUARTER(5.670, 24.26, new BigDecimal("0.25"));
+  DIME(CoinConstants.DIME_WEIGHT, CoinConstants.DIME_DIAMETER, new BigDecimal("0.1")),
+  NICKEL(CoinConstants.NICKEL_WEIGHT, CoinConstants.NICKEL_DIAMETER, new BigDecimal("0.05")),
+  QUARTER(CoinConstants.QUARTER_WEIGHT, CoinConstants.QUARTER_DIAMETER, new BigDecimal("0.25"));
 
   public final double weight;
   public final double diameter;

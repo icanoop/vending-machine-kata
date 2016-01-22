@@ -5,15 +5,15 @@ import static org.junit.Assert.assertEquals;
 public class CoinTest {
 
   @Test public void whenGivenDimeIdentifyDime() {
-    assertEquals(Coin.DIME, Coin.identify(2.268, 17.91));
+    assertEquals(Coin.DIME, Coin.identify(CoinConstants.DIME_WEIGHT, CoinConstants.DIME_DIAMETER));
   }
 
   @Test public void whenGivenNickelIdentifyNickel() {
-    assertEquals(Coin.NICKEL, Coin.identify(5.000, 21.21));
+    assertEquals(Coin.NICKEL, Coin.identify(CoinConstants.NICKEL_WEIGHT, CoinConstants.NICKEL_DIAMETER));
   }
 
   @Test public void whenGivenQuarterIdentifyQuarter() {
-    assertEquals(Coin.QUARTER, Coin.identify(5.670, 24.26));
+    assertEquals(Coin.QUARTER, Coin.identify(CoinConstants.QUARTER_WEIGHT, CoinConstants.QUARTER_DIAMETER));
   }
 
   @Test(expected = RuntimeException.class) public void whenGivenPennyThrowException() {
