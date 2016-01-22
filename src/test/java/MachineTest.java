@@ -3,18 +3,16 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class MachineTest {
 
   private Machine out;
-  private DisplayStub display;
+  private Display display;
   private CoinSlot coinSlot;
 
   @Before public void setUp() {
-    display = new DisplayStub();
+    display = mock(Display.class);
     coinSlot = mock(CoinSlot.class);
     out = new Machine(display, coinSlot);
   }
@@ -23,13 +21,13 @@ public class MachineTest {
     when(coinSlot.countCoins()).thenReturn(3);
     when(coinSlot.calculateValue()).thenReturn(new BigDecimal("1.0"));
     out.execute();
-    assertEquals("1.0", display.getText());
+    verify(display).display("1.0");
   }
 
   @Test public void testInsertCoinsDisplayedWhenNoCoins() {
     when(coinSlot.countCoins()).thenReturn(0);
     out.execute();
-    assertEquals("INSERT COIN", display.getText());
+    verify(display).display("INSERT COIN");
   }
 
 }
