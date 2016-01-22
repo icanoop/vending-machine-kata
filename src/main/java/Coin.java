@@ -15,7 +15,7 @@ public enum Coin {
   }
 
   public static Coin identify(double weight, double diameter) {
-    return Arrays.stream(Coin.values()).filter(x -> x.matches(weight, diameter)).findFirst().get();
+    return Arrays.stream(Coin.values()).filter(x -> x.matches(weight, diameter)).findFirst().orElseThrow(() -> new RuntimeException("Invalid Coin"));
   }
 
   private boolean matches(double weight, double diameter) {

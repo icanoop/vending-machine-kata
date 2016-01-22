@@ -16,4 +16,8 @@ public class CoinTest {
     assertEquals(Coin.QUARTER, Coin.identify(5.670, 24.26));
   }
 
+  @Test(expected = RuntimeException.class) public void whenGivenPennyThrowException() {
+    Coin.identify(2.500, 19.05);
+  }
+
 }
