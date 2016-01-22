@@ -1,3 +1,7 @@
+public enum Coin {
+  DIME, NICKEL, QUARTER;
 
-public class Coin {
+  public static Coin identify(double weight, double diameter) {
+    return DIME;
+  }
 }
